@@ -1,6 +1,6 @@
-# sbt-play-enviroment-config
+# sbt-play-environment-config
 
-Play application with enviroment dependent configuration files.
+Play application with Environment dependent configuration files.
 
 ## Usage
 

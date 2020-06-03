@@ -1,5 +1,5 @@
 package com.vs.sbt
 
-class PlayEnviromentDependentConfigTest {
+class PlayEnvironmentDependentConfigTest {
   // write tests with your preferred framework
 }

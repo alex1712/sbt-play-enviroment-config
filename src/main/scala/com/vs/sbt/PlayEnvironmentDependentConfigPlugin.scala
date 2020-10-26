@@ -27,7 +27,9 @@ object PlayEnvironmentDependentConfigPlugin extends AutoPlugin {
                          System.getProperty("config.resource", s"application-${System.getenv("SCALA_ENV")}"))
     },
     compile in Compile := ((compile in Compile) dependsOn (environmentConfigTask)).value,
-    dockerCommands += Cmd("RUN", "apt update && apt upgrade && apt install dumb-init"),
+    dockerCommands ++= Seq(
+      Cmd("RUN apk add --no-cache wget dumb-init bash"),
+    ),
     dockerEntrypoint := Seq("/usr/bin/dumb-init", "--"),
     dockerCmd := Seq(
       "bash",

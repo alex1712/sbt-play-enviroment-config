@@ -6,7 +6,7 @@ resolvers += Resolver.sbtPluginRepo("releases")
 
 name := """sbt-play-environment-config"""
 organization := "com.vs"
-version := "0.4"
+version := "0.7"
 
 sbtPlugin := true
 

@@ -6,7 +6,7 @@ resolvers += Resolver.sbtPluginRepo("releases")
 
 name := """sbt-play-environment-config"""
 organization := "com.vs"
-version := "0.7"
+version := "0.8"
 
 sbtPlugin := true
 
@@ -20,12 +20,6 @@ libraryDependencies += ("com.typesafe.play" % "sbt-plugin" % "2.8.2")
   .extra(("scalaVersion", CrossVersionUtil.binaryScalaVersion(scalaVersion.value)))
   .extra(("sbtVersion", CrossVersionUtil.binarySbtVersion(sbtVersion.value)))
 
-bintrayPackageLabels := Seq("sbt","plugin")
-bintrayVcsUrl := Some("""git@github.com:alex1712/sbt-play-environment-config.git""")
-
-publishMavenStyle := false
-bintrayRepository := "sbt-plugins"
-bintrayOrganization in bintray := None
 
 initialCommands in console := """import com.vs.sbt._"""
 
@@ -33,3 +27,6 @@ enablePlugins(ScriptedPlugin)
 // set up 'scripted; sbt plugin for testing sbt plugins
 scriptedLaunchOpts ++=
   Seq("-Xmx1024M", "-Dplugin.version=" + version.value)
+publishMavenStyle := true
+credentials += Credentials(Path.userHome / ".sbt" / ".credentials")
+publishTo := { Some("Cloudsmith API" at "https://maven.cloudsmith.io/vs-QTF/sbt-play-environment-config/") }
